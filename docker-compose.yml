@@ -1,0 +1,23 @@
+version: '2.3'
+services:
+  rabbitmq:
+    image: rabbitmq:3.11.11-management-alpine
+    hostname: rabbitmq
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    mem_limit: 2GB
+    networks:
+      - pluggable-network
+
+  repro:
+    image: repro:1.0.0
+    hostname: repro
+    container_name: repro
+    mem_limit: 128MB
+    networks:
+      - pluggable-network
+
+networks:
+  pluggable-network:
